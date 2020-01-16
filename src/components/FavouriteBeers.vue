@@ -10,7 +10,7 @@
           <dd>{{beer.abv}}%</dd>
         </dl>
         <img class="beer-image-fav" :src="beer.image_url" alt="image of beer selected">
-        <button type="button" class="delete-me-button" @click="removeBeerFromFavourites(beer.id)">Unfavourite me</button>
+        <button type="button" @click="removeBeerFromFavourites(beer.id)">Unfavourite me</button>
       </article>
     </div>
   </div>
@@ -68,7 +68,26 @@ export default {
     display: block;
   }
 
-  .delete-me-button {
+  button {
     width: 100px;
+
+    cursor: pointer;
+    border: 1px solid white;
+    border-radius: 5px;
+    min-width: 100px;
+    margin: 20px;
+    padding: 7px;
+    background-color: #401302;
+    color: white;
+    font-size: 14px;
+  }
+
+  button:hover {
+    color: white;
+    background-color: #712204;
+  }
+
+  button:focus {
+    outline: 0;
   }
 </style>
