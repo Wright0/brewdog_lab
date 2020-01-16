@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <selected-beer></selected-beer>
+    <selected-beer :beers='beers'></selected-beer>
   </div>
 </template>
 
@@ -12,7 +12,8 @@ export default {
   data(){
     return {
       beers:[],
-      selectedBeerId: 0
+      selectedBeerId: 0,
+      favouriteBeers: []
     };
   },
   // computed: {
