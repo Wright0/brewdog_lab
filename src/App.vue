@@ -9,8 +9,24 @@ import SelectBeer from './components/SelectBeer.vue'
 
 export default {
   name: 'app',
+  data(){
+    return {
+      beers:[],
+      selectedBeerId: 0
+    };
+  },
+  // computed: {
+  //   selectedBeerObj(){
+  //
+  //   }
+  // }
   components: {
     "selected-beer": SelectBeer
+  },
+  mounted(){
+    fetch('https://api.punkapi.com/v2/beers')
+      .then(response => response.json())
+      .then(beerArray => this.beers = beerArray)
   }
 }
 </script>
