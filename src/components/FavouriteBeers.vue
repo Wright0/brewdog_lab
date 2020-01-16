@@ -9,6 +9,7 @@
         <dd>{{beer.abv}}%</dd>
       </dl>
       <img class="beer-image-fav" :src="beer.image_url" alt="image of beer selected">
+      <button type="button" @click="removeBeerFromFavourites(beer.id)">Unfavourite me</button>
     </article>
   </div>
 </template>
@@ -18,7 +19,12 @@ import { eventBus } from '../main.js'
 
 export default {
   name: 'favourite-beers',
-  props: ['favouriteBeers']
+  props: ['favouriteBeers'],
+  methods: {
+    removeBeerFromFavourites(id){
+      eventBus.$emit('delete-beer-from-favourite', id)
+    }
+  }
 }
 </script>
 

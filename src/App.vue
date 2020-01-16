@@ -39,6 +39,11 @@ export default {
 
     eventBus.$on('selected-beer', beerId => this.selectedBeerId = beerId)
     eventBus.$on('send-favourite-beer', beerObj => this.favouriteBeers.push(beerObj))
+    eventBus.$on('delete-beer-from-favourite', beerBeingDeletedId => {
+      const beerObjectToDelete = this.beers.find(beer => beer.id === beerBeingDeletedId);
+      const index = this.favouriteBeers.indexOf(beerObjectToDelete);
+      this.favouriteBeers.splice(index, 1)
+    })
   }
 }
 </script>
