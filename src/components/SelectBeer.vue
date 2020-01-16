@@ -2,7 +2,6 @@
   <select v-model='selectedBeerId' @change='handleSelected'>
     <option v-for='beer in beers' :value='beer.id'>{{beer.name}}</option>
   </select>
-<!-- <p v-if='beers'>hello {{beers[2].name}}</p> -->
 </template>
 
 <script>

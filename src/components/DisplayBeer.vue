@@ -1,5 +1,5 @@
 <template lang="html">
-  <div>
+  <div v-if="beerObject">
 
     <article>
       <h3>{{beerObject.name}}</h3>
