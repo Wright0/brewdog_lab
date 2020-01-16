@@ -13,6 +13,8 @@
       </dl>
     </article>
 
+    <h1 @click="saveFavouriteBeer">Favourite This Beer YO.</h1>
+
     <div>
       <img class="beer-image" :src="beerObject.image_url" alt="image of beer selected">
     </div>
@@ -21,9 +23,16 @@
 </template>
 
 <script>
+import { eventBus } from '../main.js'
+
 export default {
   name: 'display-beer',
-  props: ['beerObject']
+  props: ['beerObject'],
+  methods: {
+    saveFavouriteBeer(){
+      eventBus.$emit('send-favourite-beer', this.beerObject);
+    }
+  }
 }
 </script>
 

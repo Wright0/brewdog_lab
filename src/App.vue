@@ -3,6 +3,7 @@
     <h1>Hair of the Brewdog</h1>
     <selected-beer :beers='beers'></selected-beer>
     <display-beer :beerObject='selectedBeerObj'></display-beer>
+    <favourite-beers :favouriteBeers='favouriteBeers'></favourite-beers>
   </div>
 </template>
 
@@ -10,6 +11,7 @@
 import { eventBus } from './main.js'
 import SelectBeer from './components/SelectBeer.vue'
 import DisplayBeer from './components/DisplayBeer.vue'
+import FavouriteBeers from './components/FavouriteBeers.vue'
 
 export default {
   name: 'app',
@@ -27,7 +29,8 @@ export default {
   },
   components: {
     "selected-beer": SelectBeer,
-    "display-beer": DisplayBeer
+    "display-beer": DisplayBeer,
+    "favourite-beers": FavouriteBeers
   },
   mounted(){
     fetch('https://api.punkapi.com/v2/beers')
@@ -35,6 +38,7 @@ export default {
       .then(beerArray => this.beers = beerArray)
 
     eventBus.$on('selected-beer', beerId => this.selectedBeerId = beerId)
+    eventBus.$on('send-favourite-beer', beerObj => this.favouriteBeers.push(beerObj))
   }
 }
 </script>
