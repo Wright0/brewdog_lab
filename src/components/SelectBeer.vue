@@ -1,11 +1,13 @@
 <template lang="html">
-  <select v-model='selectedBeerId'>
+  <select v-model='selectedBeerId' @change='handleSelected'>
     <option v-for='beer in beers' :value='beer.id'>{{beer.name}}</option>
   </select>
 <!-- <p v-if='beers'>hello {{beers[2].name}}</p> -->
 </template>
-x
+
 <script>
+import { eventBus } from '../main.js'
+
 export default {
   name: 'selected-beer',
   data(){
@@ -13,7 +15,12 @@ export default {
       selectedBeerId: 0
     }
   },
-  props: ['beers']
+  props: ['beers'],
+  methods: {
+    handleSelected(){
+      eventBus.$emit('selected-beer', this.selectedBeerId);
+    }
+  }
 }
 </script>
 

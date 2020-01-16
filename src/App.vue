@@ -5,6 +5,7 @@
 </template>
 
 <script>
+import { eventBus } from './main.js'
 import SelectBeer from './components/SelectBeer.vue'
 
 export default {
@@ -28,6 +29,8 @@ export default {
     fetch('https://api.punkapi.com/v2/beers')
       .then(response => response.json())
       .then(beerArray => this.beers = beerArray)
+
+    eventBus.$on('selected-beer', beerId => this.selectedBeerId = beerId)
   }
 }
 </script>
