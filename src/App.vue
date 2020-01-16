@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <h1>Hair of the Brewdog</h1>
     <selected-beer :beers='beers'></selected-beer>
     <display-beer :beerObject='selectedBeerObj'></display-beer>
   </div>
