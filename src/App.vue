@@ -1,12 +1,14 @@
 <template>
   <div id="app">
     <selected-beer :beers='beers'></selected-beer>
+    <display-beer :beerObject='selectedBeerObj'></display-beer>
   </div>
 </template>
 
 <script>
 import { eventBus } from './main.js'
 import SelectBeer from './components/SelectBeer.vue'
+import DisplayBeer from './components/DisplayBeer.vue'
 
 export default {
   name: 'app',
@@ -17,13 +19,14 @@ export default {
       favouriteBeers: []
     };
   },
-  // computed: {
-  //   selectedBeerObj(){
-  //
-  //   }
-  // }
+  computed: {
+    selectedBeerObj(){
+      return this.beers.find(beer => beer.id === this.selectedBeerId)
+    }
+  },
   components: {
-    "selected-beer": SelectBeer
+    "selected-beer": SelectBeer,
+    "display-beer": DisplayBeer
   },
   mounted(){
     fetch('https://api.punkapi.com/v2/beers')
